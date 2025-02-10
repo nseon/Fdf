@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/02/06 16:31:04 by nseon            ###   ########.fr        #
+#    Updated: 2025/02/10 16:53:27 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,22 @@ DEP			=	$(patsubst %.c, $(MAKE_DIR)%.d, $(SRC))
 # ---------------MAIN---------------- #
 
 SRC			=	fdf.c\
-				draw_line.c
+
+# ---------------DRAW---------------- #
+
+SRC			+=	$(addprefix $(DRW_DIR), $(DRW_SRC))
+
+DRW_SRC		=	draw_line.c\
+
+DRW_DIR		=	draw/
+
+# -------------PARSING--------------- #
+
+SRC			+=	$(addprefix $(PRS_DIR), $(PRS_SRC))
+
+PRS_SRC		=	parsing.c
+
+PRS_DIR		=	parsing/
 
 # -----------LIBS / INCLUDES--------- #
 

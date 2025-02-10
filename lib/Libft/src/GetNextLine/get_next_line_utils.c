@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 10:22:29 by nseon             #+#    #+#             */
-/*   Updated: 2024/12/12 13:39:20 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/10 17:02:19 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_strlen(char *s)
 	return (n);
 }
 
-char	*ft_strnjoin(char **s1, char *s2, int n)
+char	*ft_strnjoin2(char **s1, char *s2, int n)
 {
 	char	*tab;
 	int		i;
@@ -59,7 +59,7 @@ char	*ft_strnjoin(char **s1, char *s2, int n)
 	return (tab);
 }
 
-char	*ft_substr(char **s, int start)
+char	*ft_substr2(char **s, int start)
 {
 	int		i;
 	char	*tab;

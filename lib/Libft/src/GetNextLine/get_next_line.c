@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 10:14:35 by nseon             #+#    #+#             */
-/*   Updated: 2024/12/12 15:25:30 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/10 17:02:31 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*line(int i, char **left)
 		j++;
 	}
 	str[j] = '\0';
-	*left = ft_substr(left, i);
+	*left = ft_substr2(left, i);
 	if (!(*left))
 		return (null_free(&str));
 	if ((*left)[0] == '\0')
@@ -52,7 +52,7 @@ char	*get_next_line(int fd)
 		nb = read(fd, buff, BUFFER_SIZE);
 		if (nb == -1 || (nb == 0 && (!left || (left && left[0] == '\0'))))
 			return (null_free(&left));
-		left = ft_strnjoin(&left, buff, nb);
+		left = ft_strnjoin2(&left, buff, nb);
 		if (!left)
 			return (0);
 		while (left[i])
