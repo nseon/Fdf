@@ -6,45 +6,61 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:55:23 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/10 19:11:03 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/11 16:34:59 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "get_next_line.h"
 #include "struct.h"
+#include "ft_printf.h"
 
-char	*ft_realloc(char *tab, int plus)
+int	pts_realloc(t_data *data, int nb_lines)
 {
-	char	*str;
+	t_point	*temp;
 	int		i;
 
 	i = 0;
-	str = malloc(ft_strlen(tab) + plus + 1);
-	if (!str)
-		return (NULL);
-	while (tab[i])
-	{}
+	temp = malloc(sizeof(t_point) * data->size_line * nb_lines + 1);
+	if (!temp)
+		return (1);
+	while (i < data->size_line * (nb_lines))
+	{
+		ft_printf("%d\n", i);
+		temp[i] = data->pts[i];
+		i++;
+	}
+	free(data->pts);
+	data->pts = temp;
+	return (0);
 }
 
-char	**map(int fd)
+int	map(int fd, t_data *data)
 {
-	t_point	*pts;
-	char	**tab;
-	int		x;
+	char	*tab;
+	char	**z;
 	int		y;
+	int		x;
 
-	y = 0;
 	x = 0;
-	tab = ft_split(get_next_line(fd), ' ');
-	if (!tab)
-		return (NULL);
-	while (tab[x])
+	y = 0;
+	tab = (char *)1;
+	while (tab)
 	{
-		pts[x].x = x;
-		pts[x].y = y;
-		pts[x].z = ft_atoi(tab[x]);
-		x++;
+		tab = get_next_line(fd);
+		data->size_line = count_w(tab, ' ');
+		z = ft_split(tab, ' ');
+		ft_printf("%d\n", y);
+		pts_realloc(data, y);
+		ft_printf("0000000000000000\n");
+		while (x < data->size_line)
+		{
+			data->pts[y * data->size_line + x].x = x;
+			data->pts[y * data->size_line + x].y = y;
+			data->pts[y * data->size_line + x].z = ft_atoi(z[x]);
+			x++;
+		}
+		y++;
 	}
-	return (tab);
+	return (0);
 }

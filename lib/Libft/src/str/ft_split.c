@@ -6,13 +6,13 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:45:17 by nseon             #+#    #+#             */
-/*   Updated: 2024/11/19 10:24:35 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/11 15:48:00 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_w(const char *str, char c)
+int	count_w(const char *str, char c)
 {
 	int	count;
 	int	i;

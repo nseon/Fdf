@@ -6,13 +6,13 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:21:08 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/10 16:23:28 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/11 16:36:20 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-char	**map(int fd);
+int	map(int fd, t_data *data);
 
 #endif

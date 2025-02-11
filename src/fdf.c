@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 10:53:13 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/10 16:51:11 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/11 16:37:37 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
+		ft_bzero(&data, sizeof(t_data));
 		fd = open(argv[1], O_RDONLY);
-		map(fd);
+		map(fd, &data);
 		data.link = mlx_init();
 		if (!data.link)
 			return (-1);
