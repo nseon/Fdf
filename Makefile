@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/02/10 16:53:27 by nseon            ###   ########.fr        #
+#    Updated: 2025/02/12 16:10:08 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC			=	fdf.c\
 SRC			+=	$(addprefix $(DRW_DIR), $(DRW_SRC))
 
 DRW_SRC		=	draw_line.c\
+				draw_map.c
 
 DRW_DIR		=	draw/
 
@@ -41,6 +42,14 @@ SRC			+=	$(addprefix $(PRS_DIR), $(PRS_SRC))
 PRS_SRC		=	parsing.c
 
 PRS_DIR		=	parsing/
+
+# ---------------ZOOM---------------- #
+
+SRC			+=	$(addprefix $(ZOO_DIR), $(ZOO_SRC))
+
+ZOO_SRC		=	spacing.c
+
+ZOO_DIR		=	zoom/
 
 # -----------LIBS / INCLUDES--------- #
 

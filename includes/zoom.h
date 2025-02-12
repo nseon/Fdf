@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   zoom.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/05 15:55:48 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/12 17:58:37 by nseon            ###   ########.fr       */
+/*   Created: 2025/02/12 16:06:03 by nseon             #+#    #+#             */
+/*   Updated: 2025/02/12 16:08:35 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#ifndef ZOOM_H
+# define ZOOM_H
 
-# define WIDTH 1000
-# define HEIGHT 700
+#include "struct.h"
 
-typedef struct s_point
-{
-	int	x;
-	int	y;
-	int	z;
-}	t_point;
-
-typedef struct s_data
-{
-	void	*link;
-	void	*window;
-	int		size_line;
-	int		nb_line;
-	t_point	*pts;
-}	t_data;
+void	spacing(t_data *data);
 
 #endif
