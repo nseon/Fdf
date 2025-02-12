@@ -6,13 +6,13 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 16:45:17 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/11 15:48:00 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/12 11:45:53 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_w(const char *str, char c)
+static int	count_w(const char *str, char c)
 {
 	int	count;
 	int	i;
@@ -21,7 +21,8 @@ int	count_w(const char *str, char c)
 	count = 0;
 	while (str[i])
 	{
-		if ((str[i] != c && i == 0) || (str[i] != c && str[i - 1] == c))
+		if ((str[i] != c && i == 0)
+			|| (i != 0 && str[i] != c && str[i - 1] == c))
 			count++;
 		i++;
 	}

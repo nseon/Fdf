@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 15:55:48 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/11 15:51:06 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/12 13:27:06 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_data
 	void	*link;
 	void	*window;
 	int		size_line;
+	int		nb_line;
 	t_point	*pts;
 }	t_data;
 

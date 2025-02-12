@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:16:50 by nseon             #+#    #+#             */
-/*   Updated: 2024/11/29 11:26:21 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/12 10:53:42 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ int	ft_printf(const char *format, ...)
 	fill(tab, format, args_bis);
 	len = write(1, tab, len);
 	free(tab);
+	va_end(args);
+	va_end(args_bis);
 	return (len);
 }
