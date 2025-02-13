@@ -1,20 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:21:08 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/13 16:44:21 by nseon            ###   ########.fr       */
+/*   Created: 2025/02/13 14:21:35 by nseon             #+#    #+#             */
+/*   Updated: 2025/02/13 16:13:48 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "struct.h"
 
-int		map(int fd, t_data *data);
-int		fill_link(t_data *data);
-int		close_window(int keycode, t_data *data);
 
-#endif

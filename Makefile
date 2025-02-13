@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/02/12 16:10:08 by nseon            ###   ########.fr        #
+#    Updated: 2025/02/13 16:14:48 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRC			=	fdf.c\
 SRC			+=	$(addprefix $(DRW_DIR), $(DRW_SRC))
 
 DRW_SRC		=	draw_line.c\
-				draw_map.c
+				draw_map.c\
+				put_pixel.c
 
 DRW_DIR		=	draw/
 
@@ -39,7 +40,8 @@ DRW_DIR		=	draw/
 
 SRC			+=	$(addprefix $(PRS_DIR), $(PRS_SRC))
 
-PRS_SRC		=	parsing.c
+PRS_SRC		=	parsing.c\
+				fill_struct.c
 
 PRS_DIR		=	parsing/
 
@@ -66,7 +68,7 @@ INCLUDES	=	$(INC_DIR)\
 # --------------CONFIGS-------------- #
 
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -Ofast
 CPPFLAGS	=	-MMD -MP $(addprefix -I, $(INCLUDES))
 
 LDFLAGS		+=	$(addprefix -L, $(dir $(LIB_PATH)))

@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:01:52 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/12 15:27:48 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/13 11:36:39 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include "struct.h"
 
 void	draw_line(t_data *data, t_point pt0, t_point pt1);
-void	print_map(t_data *data);
+int		print_map(t_data *data);
 
 #endif

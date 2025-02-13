@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:55:23 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/12 13:34:19 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/13 13:22:40 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "get_next_line.h"
 #include "struct.h"
 #include "ft_printf.h"
+#include "parsing.h"
 
 int	count_w(char **tab)
 {
@@ -46,7 +47,7 @@ int	pts_realloc(t_data *data, int nb_lines)
 	i = 0;
 	temp = malloc(sizeof(t_point) * data->size_line * (nb_lines + 1));
 	if (!temp)
-		return (1);
+		close_window(0, data);
 	while (i < data->size_line * (nb_lines))
 	{
 		temp[i] = data->pts[i];

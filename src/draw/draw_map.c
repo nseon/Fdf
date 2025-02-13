@@ -6,19 +6,25 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:00:41 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/12 15:29:15 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/13 16:37:39 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "struct.h"
 #include "draw.h"
+#include "mlx.h"
+#include "parsing.h"
 
-void	print_map(t_data *data)
+int	print_map(t_data *data)
 {
 	int	x;
 	int	y;
 
 	y = 0;
+	data->image = mlx_new_image(data->link, WIDTH, HEIGHT);
+	if (!data->image)
+		close_window(0, data);
 	while (y < data->nb_line)
 	{
 		x = 0;
@@ -34,4 +40,5 @@ void	print_map(t_data *data)
 		}
 		y++;
 	}
+	return (0);
 }
