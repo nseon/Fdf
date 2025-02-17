@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:32:58 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/12 18:10:05 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/17 10:56:09 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	spacing(t_data *data)
 	if (data->size_line > data->nb_line)
 		zoom = WIDTH / (data->size_line << 1);
 	else
-		zoom = HEIGHT/ (data->size_line << 1);
+		zoom = HEIGHT / (data->size_line << 1);
 	shift_x = (WIDTH - (data->size_line - 1) * (zoom + 1)) >> 1;
 	shift_y = (HEIGHT - (data->nb_line - 1) * (zoom + 1)) >> 1;
 	while (y < data->nb_line)

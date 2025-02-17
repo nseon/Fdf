@@ -6,14 +6,14 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:06:03 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/12 16:08:35 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/17 10:55:11 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOOM_H
 # define ZOOM_H
 
-#include "struct.h"
+# include "struct.h"
 
 void	spacing(t_data *data);
 

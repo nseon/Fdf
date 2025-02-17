@@ -6,12 +6,13 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:54:01 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/13 12:35:35 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/17 17:56:13 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "mlx.h"
+#include "draw.h"
 
 int	abs(int nb)
 {
@@ -20,7 +21,7 @@ int	abs(int nb)
 	return (nb);
 }
 
-void	draw_horizontal_line(t_data *data, t_point pt0, t_point pt1)
+void	draw_horizontal_line(t_point pt0, t_point pt1, t_img img)
 {
 	int	dx;
 	int	dy;
@@ -34,7 +35,7 @@ void	draw_horizontal_line(t_data *data, t_point pt0, t_point pt1)
 	p = 2 * dy - dx;
 	while (pt0.x <= pt1.x)
 	{
-		mlx_pixel_put(data->link, data->window, pt0.x, pt0.y, 0xFFFFFF);
+		put_pixel(img, pt0);
 		if (p >= 0)
 		{
 			pt0.y += dir;
@@ -45,7 +46,7 @@ void	draw_horizontal_line(t_data *data, t_point pt0, t_point pt1)
 	}
 }
 
-void	draw_vertical_line(t_data *data, t_point pt0, t_point pt1)
+void	draw_vertical_line(t_point pt0, t_point pt1, t_img img)
 {
 	int	dx;
 	int	dy;
@@ -59,7 +60,7 @@ void	draw_vertical_line(t_data *data, t_point pt0, t_point pt1)
 	p = 2 * dx - dy;
 	while (pt0.y <= pt1.y)
 	{
-		mlx_pixel_put(data->link, data->window, pt0.x, pt0.y, 0xFFFFFF);
+		put_pixel(img, pt0);
 		if (p >= 0)
 		{
 			pt0.x += dir;
@@ -70,20 +71,20 @@ void	draw_vertical_line(t_data *data, t_point pt0, t_point pt1)
 	}
 }
 
-void	draw_line(t_data *data, t_point pt0, t_point pt1)
+void	draw_line(t_point pt0, t_point pt1, t_img img)
 {
 	if (abs(pt1.x - pt0.x) > abs(pt1.y - pt0.y))
 	{
 		if (pt0.x > pt1.x)
-			draw_horizontal_line(data, pt1, pt0);
+			draw_horizontal_line(pt1, pt0, img);
 		else
-			draw_horizontal_line(data, pt0, pt1);
+			draw_horizontal_line(pt0, pt1, img);
 	}
 	else
 	{
 		if (pt0.y > pt1.y)
-			draw_vertical_line(data, pt1, pt0);
+			draw_vertical_line(pt1, pt0, img);
 		else
-			draw_vertical_line(data, pt0, pt1);
+			draw_vertical_line(pt0, pt1, img);
 	}
 }

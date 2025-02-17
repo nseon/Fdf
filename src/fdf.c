@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 10:53:13 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/13 12:39:58 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/17 18:06:57 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 
 void	free_all(t_data *data)
 {
-		mlx_destroy_image(data->link, data->image);
-		mlx_destroy_window(data->link, data->window);
-		mlx_destroy_display(data->link);
-		free(data->link);
-		free(data->pts);
+	mlx_destroy_image(data->link, data->img);
+	mlx_destroy_window(data->link, data->window);
+	mlx_destroy_display(data->link);
+	free(data->link);
+	free(data->pts);
 }
 
 int	main(int argc, char **argv)
@@ -39,12 +39,12 @@ int	main(int argc, char **argv)
 		ft_bzero(&data, sizeof(t_data));
 		fd = open(argv[1], O_RDONLY);
 		map(fd, &data);
-		fill_link(&data);
+		check = fill_link(&data);
+		if (check)
+			return (close_window(0, &data));
 		mlx_key_hook(data.window, &close_window, &data);
 		spacing(&data);
-		check = print_map(&data);
-		if (check)
-			close_window(0, &data);
+		print_map(&data);
 		mlx_loop(data.link);
 		free_all(&data);
 	}

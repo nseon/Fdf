@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:55:23 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/13 13:22:40 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/17 14:03:23 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	fill_data(t_data *data, int y, char **z)
 		data->pts[y * data->size_line + x].x = x;
 		data->pts[y * data->size_line + x].y = y;
 		data->pts[y * data->size_line + x].z = ft_atoi(z[x]);
+		data->pts[y * data->size_line + x].color = 0xFFFFFF;
 	}
 }
 
