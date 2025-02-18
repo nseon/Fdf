@@ -6,15 +6,15 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 15:55:48 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/17 14:00:16 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/18 11:32:12 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define WIDTH 1000
-# define HEIGHT 700
+# define WIDTH 1500
+# define HEIGHT 1000
 
 typedef struct s_point
 {

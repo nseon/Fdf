@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:32:58 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/17 10:56:09 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/18 16:15:18 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ void	spacing(t_data *data)
 		x = 0;
 		while (x < data->size_line)
 		{
-			data->pts[y * data->size_line + x].x += zoom * x + shift_x;
+			data->pts[y * data->size_line + x].x += zoom * x + shift_x + WIDTH / 8;
 			data->pts[y * data->size_line + x].y += zoom * y + shift_y;
+			data->pts[y * data->size_line + x].z *= 3;
 			x++;
 		}
 		y++;

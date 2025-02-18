@@ -6,13 +6,14 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:54:01 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/17 17:56:13 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/18 15:44:41 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 #include "mlx.h"
 #include "draw.h"
+#include "ft_printf.h"
 
 int	abs(int nb)
 {
@@ -33,9 +34,10 @@ void	draw_horizontal_line(t_point pt0, t_point pt1, t_img img)
 	dir = -1 * (dy < 0) + 1 * (dy > 0);
 	dy *= dir;
 	p = 2 * dy - dx;
-	while (pt0.x <= pt1.x)
+	while (pt0.x <= pt1.x && pt0.y <= HEIGHT)
 	{
-		put_pixel(img, pt0);
+		if (0 <= pt0.x && pt0.x < WIDTH && 0 <= pt0.y && pt0.y <= HEIGHT)
+			put_pixel(img, pt0);
 		if (p >= 0)
 		{
 			pt0.y += dir;
@@ -55,12 +57,13 @@ void	draw_vertical_line(t_point pt0, t_point pt1, t_img img)
 
 	dx = pt1.x - pt0.x;
 	dy = pt1.y - pt0.y;
-	dir = -1 * (dy < 0) + 1 * (dy > 0);
-	dy *= dir;
+	dir = -1 * (dx < 0) + 1 * (dx > 0);
+	dx *= dir;
 	p = 2 * dx - dy;
-	while (pt0.y <= pt1.y)
+	while (pt0.y <= pt1.y && pt0.y <= HEIGHT)
 	{
-		put_pixel(img, pt0);
+		if (0 <= pt0.x && pt0.x < WIDTH && 0 <= pt0.y && pt0.y <= HEIGHT)
+			put_pixel(img, pt0);
 		if (p >= 0)
 		{
 			pt0.x += dir;
