@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:21:08 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/13 16:44:21 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/19 10:14:48 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 
 int		map(int fd, t_data *data);
 int		fill_link(t_data *data);
-int		close_window(int keycode, t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 10:53:13 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/17 18:06:57 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/19 18:09:47 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,34 @@
 #include <fcntl.h>
 #include "parsing.h"
 #include "ft_printf.h"
+#include <X11/keysym.h>
+#include <X11/X.h>
 #include "zoom.h"
+
+int	close_window(t_data *data)
+{
+	mlx_loop_end(data->link);
+	return (0);
+}
+
+int	redirect_signals(int keycode, t_data *data)
+{
+	if (keycode == XK_Escape || keycode == 0)
+		close_window(data);
+	if (keycode == XK_Up)
+	{
+		mlx_destroy_image(data->link, data->img);
+		data->z += 0.1;
+		print_map(data);
+	}
+	if (keycode == XK_Down)
+	{
+		mlx_destroy_image(data->link, data->img);
+		data->z -= 0.1;
+		print_map(data);
+	}
+	return (0);
+}
 
 void	free_all(t_data *data)
 {
@@ -41,8 +68,8 @@ int	main(int argc, char **argv)
 		map(fd, &data);
 		check = fill_link(&data);
 		if (check)
-			return (close_window(0, &data));
-		mlx_key_hook(data.window, &close_window, &data);
+			return (close_window(&data));
+		mlx_hook(data.window, KeyPress, KeyPressMask, &redirect_signals, &data);
 		spacing(&data);
 		print_map(&data);
 		mlx_loop(data.link);

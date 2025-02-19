@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/02/13 16:14:48 by nseon            ###   ########.fr        #
+#    Updated: 2025/02/19 16:21:35 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ CFLAGS		=	-Wall -Wextra -Werror -Ofast
 CPPFLAGS	=	-MMD -MP $(addprefix -I, $(INCLUDES))
 
 LDFLAGS		+=	$(addprefix -L, $(dir $(LIB_PATH)))
-LDLIBS		+=	$(addprefix -l, $(LIB)) -lXext -lX11
+LDLIBS		+=	$(addprefix -l, $(LIB)) -lXext -lX11 -lm
 
 # --------------TARGETS-------------- #
 

@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:55:23 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/17 14:03:23 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/19 18:07:04 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "get_next_line.h"
 #include "struct.h"
 #include "ft_printf.h"
-#include "parsing.h"
+#include "fdf.h"
 
 int	count_w(char **tab)
 {
@@ -47,7 +47,7 @@ int	pts_realloc(t_data *data, int nb_lines)
 	i = 0;
 	temp = malloc(sizeof(t_point) * data->size_line * (nb_lines + 1));
 	if (!temp)
-		close_window(0, data);
+		close_window(data);
 	while (i < data->size_line * (nb_lines))
 	{
 		temp[i] = data->pts[i];
@@ -61,6 +61,7 @@ int	pts_realloc(t_data *data, int nb_lines)
 void	fill_data(t_data *data, int y, char **z)
 {
 	int	x;
+	int	comp_z;
 
 	x = -1;
 	while (++x < data->size_line)
@@ -68,6 +69,11 @@ void	fill_data(t_data *data, int y, char **z)
 		data->pts[y * data->size_line + x].x = x;
 		data->pts[y * data->size_line + x].y = y;
 		data->pts[y * data->size_line + x].z = ft_atoi(z[x]);
+		comp_z = data->pts[y * data->size_line + x].z;
+		if (comp_z < 0)
+			comp_z *= -1;
+		if (comp_z > data->max_z)
+			data->max_z = comp_z;
 		data->pts[y * data->size_line + x].color = 0xFFFFFF;
 	}
 }
@@ -80,6 +86,7 @@ int	map(int fd, t_data *data)
 
 	y = 0;
 	tab = (char *)1;
+	data->max_z = 0;
 	while (tab)
 	{
 		data->nb_line = y;
