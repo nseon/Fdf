@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:00:41 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/20 13:19:10 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/20 18:59:22 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ t_point	pt_place(t_data *data, t_point pt)
 	const int		x = pt.x;
 	const int		y = pt.y;
 
-	pt.x += 8 * (data->zoom * x + data->shift_x + WIDTH / 8) / 7;
-	pt.y += data->zoom * y + data->shift_y;
+	pt.x += data->zoom * x + WIDTH / 15;
+	pt.y += data->zoom * y;
 	pt.z *= data->z * (4 * data->size_line * (1 / ((double)data->size_line / 8))
 			* (1 / (double)data->max_z));
 	pt.x = pt.x + pt.y * cos(rad) + pt.z * cos(-rad);
 	pt.y = pt.y * sin(rad) + pt.z * sin(-rad);
+	pt.x += data->shift_x;
+	pt.y += data->shift_y;
 	return (pt);
 }
 
@@ -39,21 +41,23 @@ int	grid(t_data *data, t_img img)
 	int				x;
 	int				y;
 
-	y = -1;
-	while (++y < data->nb_line)
+	y = 0;
+	while (y < data->nb_line)
 	{
-		x = -1;
-		while (++x < data->size_line)
+		x = 0;
+		while (x < data->size_line)
 		{
-			if (x)
+			if (x > 0)
 				draw_line(pt_place(data, data->pts[y * data->size_line + x]),
-					pt_place(data, data->pts[y * data->size_line + x - 1]),
+					pt_place(data, data->pts[y * data->size_line + x - data->lod]),
 					img);
-			if (y)
+			if (y > 0)
 				draw_line(pt_place(data, data->pts[y * data->size_line + x]),
-					pt_place(data, data->pts[(y - 1) * data->size_line + x]),
+					pt_place(data, data->pts[(y - data->lod) * data->size_line + x]),
 					img);
+			x += data->lod;
 		}
+		y += data->lod;
 	}
 	return (0);
 }

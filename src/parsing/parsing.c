@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:55:23 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/20 13:44:58 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/20 18:45:09 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "struct.h"
 #include "ft_printf.h"
 #include "fdf.h"
+#include "parsing.h"
 
 int	count_w(char **tab)
 {
@@ -58,26 +59,6 @@ int	pts_realloc(t_data *data, int nb_lines)
 	return (0);
 }
 
-void	fill_data(t_data *data, int y, char **z)
-{
-	int	x;
-	int	comp_z;
-
-	x = -1;
-	while (++x < data->size_line)
-	{
-		data->pts[y * data->size_line + x].x = x;
-		data->pts[y * data->size_line + x].y = y;
-		data->pts[y * data->size_line + x].z = ft_atoi(z[x]);
-		comp_z = data->pts[y * data->size_line + x].z;
-		if (comp_z < 0)
-			comp_z *= -1;
-		if (comp_z > data->max_z)
-			data->max_z = comp_z;
-		data->pts[y * data->size_line + x].color = 0xFFFFFF;
-	}
-}
-
 int	map(int fd, t_data *data)
 {
 	char	*tab;
@@ -85,20 +66,21 @@ int	map(int fd, t_data *data)
 	int		y;
 
 	y = 0;
-	tab = NULL;
-	while (tab || y == 0)
+	tab = (char *)1;
+	while (tab)
 	{
 		data->nb_line = y;
-		free(tab);
 		tab = get_next_line(fd);
-		if (!tab && y != 0)
+		if (!tab)
 			return (1);
+		tab[ft_strlen(tab) - 1] = ' ';
 		z = ft_split(tab, ' ');
 		if (y == 0)
 			data->size_line = count_w(z);
 		pts_realloc(data, y);
 		fill_data(data, y, z);
 		free_split(z);
+		free(tab);
 		y++;
 	}
 	return (0);
