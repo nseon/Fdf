@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:55:23 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/19 18:07:04 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/20 13:44:58 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,18 +85,17 @@ int	map(int fd, t_data *data)
 	int		y;
 
 	y = 0;
-	tab = (char *)1;
-	data->max_z = 0;
-	while (tab)
+	tab = NULL;
+	while (tab || y == 0)
 	{
 		data->nb_line = y;
-		if (tab != (char *)1)
-			free(tab);
+		free(tab);
 		tab = get_next_line(fd);
-		if (!tab)
+		if (!tab && y != 0)
 			return (1);
 		z = ft_split(tab, ' ');
-		data->size_line = count_w(z);
+		if (y == 0)
+			data->size_line = count_w(z);
 		pts_realloc(data, y);
 		fill_data(data, y, z);
 		free_split(z);
