@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 10:53:13 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/20 19:13:58 by nseon            ###   ########.fr       */
+/*   Updated: 2025/02/24 12:40:55 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,14 @@ int	redirect_signals(int keycode, t_data *data)
 {
 	if (keycode == XK_Escape || keycode == 0)
 		close_window(data);
-	if (keycode == 65451)
+	if (keycode == 65453)
 	{
 		mlx_destroy_image(data->link, data->img);
-		if (data->lod > data->size_line - 1)
+		if (data->lod < data->size_line / 2)
 			data->lod += 1;
 		print_map(data);
 	}
-	if (keycode == 65453)
+	if (keycode == 65451)
 	{
 		mlx_destroy_image(data->link, data->img);
 		if (data->lod >= 2)
