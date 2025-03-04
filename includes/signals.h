@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   signals.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 15:10:58 by nseon             #+#    #+#             */
-/*   Updated: 2025/03/04 11:41:04 by nseon            ###   ########.fr       */
+/*   Created: 2025/03/04 10:35:18 by nseon             #+#    #+#             */
+/*   Updated: 2025/03/04 11:59:44 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef SIGNALS_H
+# define SIGNALS_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
-
-char	*ft_strnjoin2(char **s1, char *s2, int n);
-char	*get_next_line(int fd, int check);
-char	*ft_substr2(char **s, int start);
-char	*null_free(char **str);
+int	click(int keycode, int x, int y, t_data *data);
+int	unclick(int keycode, int x, int y, t_data *data);
+int	redirect_signals(int keycode, t_data *data);
 
 #endif

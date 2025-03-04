@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/02/19 16:21:35 by nseon            ###   ########.fr        #
+#    Updated: 2025/03/04 10:42:14 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,15 @@ SRC			+=	$(addprefix $(ZOO_DIR), $(ZOO_SRC))
 ZOO_SRC		=	spacing.c
 
 ZOO_DIR		=	zoom/
+
+# --------------INPUT---------------- #
+
+SRC			+=	$(addprefix $(NPT_DIR), $(NPT_SRC))
+
+NPT_SRC		=	mouse.c\
+				signals.c
+
+NPT_DIR		=	input/
 
 # -----------LIBS / INCLUDES--------- #
 

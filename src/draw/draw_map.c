@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:00:41 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/24 12:38:14 by nseon            ###   ########.fr       */
+/*   Updated: 2025/03/04 11:59:02 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ int	grid(t_data *data, t_img img)
 		{
 			if (x > 0)
 				draw_line(pt_place(data, data->pts[y * data->size_line + x]),
-					pt_place(data, data->pts[y * data->size_line + x - data->lod]),
-					img);
+					pt_place(data, data->pts[y * data->size_line + x
+						- data->lod]), img);
 			if (y > 0)
 				draw_line(pt_place(data, data->pts[y * data->size_line + x]),
-					pt_place(data, data->pts[(y - data->lod) * data->size_line + x]),
-					img);
+					pt_place(data, data->pts[(y - data->lod) * data->size_line
+						+ x]), img);
 			x += data->lod;
 		}
 		y += data->lod;

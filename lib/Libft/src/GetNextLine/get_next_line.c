@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 10:14:35 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/10 17:02:31 by nseon            ###   ########.fr       */
+/*   Updated: 2025/03/04 11:42:09 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*line(int i, char **left)
 	return (str);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int check)
 {
 	static char	*left;
 	char		buff[BUFFER_SIZE];
@@ -46,6 +46,8 @@ char	*get_next_line(int fd)
 	int			nb;
 
 	nb = BUFFER_SIZE;
+	if (!check)
+		return (null_free(&left));
 	while (!(nb < BUFFER_SIZE && left))
 	{
 		i = 0;
