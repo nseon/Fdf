@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:57:47 by nseon             #+#    #+#             */
-/*   Updated: 2025/03/04 11:28:11 by nseon            ###   ########.fr       */
+/*   Updated: 2025/03/05 16:38:26 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ int	fill_link(t_data *data)
 {
 	data->link = mlx_init();
 	if (!data->link)
-		return (1);
+		return (free(data->pts), 1);
 	data->window = mlx_new_window(data->link, WIDTH, HEIGHT, "FDF");
 	if (!data->window)
 	{
 		mlx_destroy_display(data->link);
-		return (close_window(data));
+		free(data->link);
+		return (free(data->pts), 1);
 	}
 	data->z = 1;
 	data->click = 0;

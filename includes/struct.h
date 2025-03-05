@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 15:55:48 by nseon             #+#    #+#             */
-/*   Updated: 2025/03/04 10:11:23 by nseon            ###   ########.fr       */
+/*   Updated: 2025/03/05 14:19:52 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_data
 	int		nb_line;
 	int		max_z;
 	int		shift_x;
-	int		zoom;
+	double	zoom;
 	int		shift_y;
 	double	z;
 	int		click;

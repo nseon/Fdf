@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:55:23 by nseon             #+#    #+#             */
-/*   Updated: 2025/03/04 12:00:40 by nseon            ###   ########.fr       */
+/*   Updated: 2025/03/05 16:33:13 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "ft_printf.h"
 #include "fdf.h"
 #include "parsing.h"
+#include "errno.h"
 
 int	count_w(char **tab)
 {
@@ -50,9 +51,7 @@ int	pts_realloc(t_data *data, int nb_lines)
 	i = 0;
 	temp = malloc(sizeof(t_point) * data->size_line * (nb_lines + 1));
 	if (!temp)
-	{
-		return (1);
-	}
+		return (free(data->pts), 1);
 	while (i < data->size_line * (nb_lines))
 	{
 		temp[i] = data->pts[i];
@@ -71,21 +70,21 @@ int	map(int fd, t_data *data)
 
 	y = -1;
 	tab = (char *)1;
-	while (tab || ++y)
+	while (++y >= 0 && tab)
 	{
 		data->nb_line = y;
 		tab = get_next_line(fd, 1);
 		if (!tab)
-			return (1);
+		{
+			get_next_line(fd, 0);
+			return (0 + (errno != 0));
+		}
 		tab[ft_strlen(tab) - 1] = ' ';
 		z = ft_split(tab, ' ');
 		if (y == 0)
 			data->size_line = count_w(z);
 		if (pts_realloc(data, y))
-		{
-			get_next_line(fd, 0);
-			return (free_split_and_co(z, tab));
-		}
+			return (get_next_line(fd, 0), free_split_and_co(z, tab));
 		fill_data(data, y, z);
 		free_split_and_co(z, tab);
 	}

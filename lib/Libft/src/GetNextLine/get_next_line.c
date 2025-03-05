@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 10:14:35 by nseon             #+#    #+#             */
-/*   Updated: 2025/03/04 11:42:09 by nseon            ###   ########.fr       */
+/*   Updated: 2025/03/05 14:39:24 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
 
 char	*line(int i, char **left)
 {
@@ -23,7 +24,7 @@ char	*line(int i, char **left)
 	j = 0;
 	str = malloc((i + 1) * sizeof (char));
 	if (!str)
-		return (null_free(left));
+		return (null_free(left, 0));
 	while (j < i)
 	{
 		str[j] = (*left)[j];
@@ -32,9 +33,9 @@ char	*line(int i, char **left)
 	str[j] = '\0';
 	*left = ft_substr2(left, i);
 	if (!(*left))
-		return (null_free(&str));
+		return (null_free(&str, 1));
 	if ((*left)[0] == '\0')
-		null_free(left);
+		null_free(left, 0);
 	return (str);
 }
 
@@ -47,22 +48,19 @@ char	*get_next_line(int fd, int check)
 
 	nb = BUFFER_SIZE;
 	if (!check)
-		return (null_free(&left));
+		return (null_free(&left, 0));
 	while (!(nb < BUFFER_SIZE && left))
 	{
-		i = 0;
+		i = -1;
 		nb = read(fd, buff, BUFFER_SIZE);
 		if (nb == -1 || (nb == 0 && (!left || (left && left[0] == '\0'))))
-			return (null_free(&left));
+			return (null_free(&left, 0));
 		left = ft_strnjoin2(&left, buff, nb);
 		if (!left)
 			return (0);
-		while (left[i])
-		{
+		while (left[++i])
 			if (left[i] == '\n')
 				return (line(i + 1, &left));
-			i++;
-		}
 	}
 	return (line(i, &left));
 }

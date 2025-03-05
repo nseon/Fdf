@@ -6,17 +6,20 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 10:22:29 by nseon             #+#    #+#             */
-/*   Updated: 2025/02/10 17:02:19 by nseon            ###   ########.fr       */
+/*   Updated: 2025/03/04 13:53:08 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
 
-char	*null_free(char **str)
+char	*null_free(char **str, int check)
 {
 	free(*str);
 	*str = NULL;
+	if (check)
+		errno = ENOMEM;
 	return (NULL);
 }
 
@@ -41,7 +44,7 @@ char	*ft_strnjoin2(char **s1, char *s2, int n)
 	i = 0;
 	tab = malloc((ft_strlen(*s1) + n + 1) * sizeof (char));
 	if (!tab)
-		return (null_free(s1));
+		return (null_free(s1, 1));
 	while (*s1 && (*s1)[i])
 	{
 		tab[i] = (*s1)[i];
@@ -55,7 +58,7 @@ char	*ft_strnjoin2(char **s1, char *s2, int n)
 		j++;
 	}
 	tab[i] = '\0';
-	null_free(s1);
+	null_free(s1, 0);
 	return (tab);
 }
 
@@ -67,13 +70,13 @@ char	*ft_substr2(char **s, int start)
 	i = 0;
 	tab = malloc((ft_strlen(*s) - start + 2) * sizeof (char));
 	if (!tab)
-		return (null_free(s));
+		return (null_free(s, 1));
 	while (i < ft_strlen(*s) - start)
 	{
 		tab[i] = (*s)[i + start];
 		i++;
 	}
 	tab[i] = '\0';
-	null_free(s);
+	null_free(s, 0);
 	return (tab);
 }
