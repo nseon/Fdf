@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:57:47 by nseon             #+#    #+#             */
-/*   Updated: 2025/03/05 16:38:26 by nseon            ###   ########.fr       */
+/*   Updated: 2025/03/06 12:10:49 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	fill_data(t_data *data, int y, char **z)
 			data->max_z = comp_z;
 		data->pts[y * data->size_line + x].color = 0xFFFFFF;
 	}
+	if (!data->max_z)
+		data->max_z += 1;
 }
 
 int	fill_link(t_data *data)

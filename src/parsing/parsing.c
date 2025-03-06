@@ -6,7 +6,7 @@
 /*   By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:55:23 by nseon             #+#    #+#             */
-/*   Updated: 2025/03/05 16:33:13 by nseon            ###   ########.fr       */
+/*   Updated: 2025/03/06 12:06:54 by nseon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,9 @@ int	map(int fd, t_data *data)
 		data->nb_line = y;
 		tab = get_next_line(fd, 1);
 		if (!tab)
-		{
-			get_next_line(fd, 0);
-			return (0 + (errno != 0));
-		}
-		tab[ft_strlen(tab) - 1] = ' ';
+			return (get_next_line(fd, 0), 0 + (errno != 0));
+		if (tab[ft_strlen(tab) - 1] == '\n')
+			tab[ft_strlen(tab) - 1] = ' ';
 		z = ft_split(tab, ' ');
 		if (y == 0)
 			data->size_line = count_w(z);

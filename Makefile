@@ -6,7 +6,7 @@
 #    By: nseon <nseon@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/08 10:00:18 by nseon             #+#    #+#              #
-#    Updated: 2025/03/06 10:30:34 by nseon            ###   ########.fr        #
+#    Updated: 2025/03/06 10:42:07 by nseon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ CPPFLAGS	=	-MMD -MP $(addprefix -I, $(INCLUDES))
 LDFLAGS		+=	$(addprefix -L, $(dir $(LIB_PATH)))
 LDLIBS		+=	$(addprefix -l, $(LIB)) -lXext -lX11 -lm
 
-# --------------TARGETS-------------- #
+# --------------TARGETS-------------- # 
 
 .PHONY: all
 all: $(NAME)
